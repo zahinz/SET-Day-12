@@ -24,8 +24,9 @@
 
 ## What I learned today 💡
 
-### Titel
-* 
+### JS form
+* HTML input always return as `string` in JavaScript
+*  
 
 ---
 

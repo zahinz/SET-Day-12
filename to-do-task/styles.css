@@ -1,0 +1,193 @@
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+:root {
+    --pri-color : rgb(76, 76, 199);
+}
+
+html, body {
+    height: 100%; 
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(61, 61, 61);
+}
+
+button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: var(--pri-color);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    border-radius: 10px;
+}
+
+#app {
+    width: 400px;
+    height: 750px;
+    /* border: 1px solid gray; */
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    border: none;
+    background-color: rgb(235, 235, 235);;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+#insertNew {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+    box-shadow: 0 5px 20px rgba(95, 95, 95, 0.493);
+    /* border: 1px solid gray; */
+    background-color: white;
+}
+
+#newTaskFormArea {
+    position: relative;
+    width: 85%;
+    height: 250px;
+}
+
+#newTaskBtn {
+    position: absolute;
+    bottom: 40px;
+}
+
+#newTask {
+    width: 100%;
+    height: 40px;
+    padding-left: 10px;
+    margin: 20px 0;
+}
+
+#dateDayArea {
+    display: flex;
+    align-items: center;
+}
+
+#dateNewTask, #timeNewTask {
+    display: flex;
+    text-align: center;
+    margin-right: 10px;
+    padding: 2px 5px;
+}
+
+#asapArea {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#bottomFormArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#asapArea p {
+    font-size: 0.8rem;
+    margin-right: 10px;
+}
+
+
+
+/* TASK LISTs */
+
+
+#taskList {
+    width: 90%;
+    /* ! remove hieght later */
+    /* height: 100px; */
+    margin-top: 40px;
+    overflow: scroll;
+    height: 58%;
+}
+
+.list-holder {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: 100px;
+}
+
+#taskFinished {
+    width: 15%;
+}
+
+.task-info {
+    width: 65%;
+}
+
+.task-info > * {
+    margin: 2.5px 0;
+}
+
+.date-time-area {
+    display: flex;
+    display: flex;
+    align-items: center;
+}
+
+.date-time-area > * {
+    margin-right: 15px;
+}
+
+.task-name {
+    margin-bottom: 5px;
+}
+
+.task-button {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.task-button i:nth-child(1) {
+    margin-right: 10px;
+}
+
+.task-button i:nth-child(2) {
+    margin-right: 20px;
+}
+
+.important {
+    color: var(--pri-color);
+}
+
+
+
+
+/* complete task */
+
+#completeList {
+    width: 85%;
+    /* ! remove hieght later */
+    /* height: 100px; */
+    margin-top: 40px;
+}
