@@ -38,6 +38,16 @@ button {
     border-radius: 10px;
 }
 
+input {
+    outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.541);
+    border-radius: 4px;
+}
+
+button {
+    border: none;
+}
+
 #app {
     width: 400px;
     height: 750px;
@@ -68,6 +78,10 @@ button {
     position: relative;
     width: 85%;
     height: 250px;
+}
+
+#newTaskFormArea h1 {
+    font-size: 1.7rem;
 }
 
 #newTaskBtn {
@@ -128,11 +142,10 @@ button {
 .list-holder {
     display: flex;
     align-items: center;
-    height: 80px;
     background-color: white;
     border-radius: 10px;
     margin-bottom: 10px;
-    height: 100px;
+    padding: 15px 0;
 }
 
 #taskFinished {
@@ -141,10 +154,12 @@ button {
 
 .task-info {
     width: 65%;
+    padding: 5px 0;
 }
 
-.task-info > * {
-    margin: 2.5px 0;
+.task-name {
+    margin-bottom: 10px;
+    font-size: 0.85rem;
 }
 
 .date-time-area {
@@ -155,11 +170,11 @@ button {
 
 .date-time-area > * {
     margin-right: 15px;
+    color: gray;
+    font-size: 0.8rem;
+    font-weight: 400;
 }
 
-.task-name {
-    margin-bottom: 5px;
-}
 
 .task-button {
     width: 30%;
@@ -177,7 +192,14 @@ button {
 }
 
 .important {
-    color: var(--pri-color);
+    background-color: var(--pri-color);
+    color: white;
+    display: flex;
+    width: max-content;
+    font-size: 0.7rem;
+    padding: 5px 8px;
+    border-radius: 8px;
+    margin-top: 10px;
 }
 
 
@@ -186,7 +208,7 @@ button {
 /* complete task */
 
 #completeList {
-    width: 85%;
+    width: 90%;
     /* ! remove hieght later */
     /* height: 100px; */
     margin-top: 40px;

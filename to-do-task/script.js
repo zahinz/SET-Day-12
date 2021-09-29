@@ -5,6 +5,17 @@ console.log(`TESTING`);
 let taskList = document.getElementById(`taskList`)
 let completeList = document.getElementById(`completeList`)
 let asapNewTask = document.getElementById(`asapNewTask`)
+let newTaskItem = document.getElementById(`newTask`)
+
+window.addEventListener("keydown", pressedKeyDown)
+
+function pressedKeyDown(evt) {
+    console.log(evt);
+    if (evt.code == "Enter") {
+        newTask()
+        newTaskItem.value = " "
+    }
+}
 
 
 function newTask() {
@@ -57,16 +68,23 @@ function newTask() {
     newDateTimeArea.classList.add("date-time-area")
 
     // ? create new .task-date .task-time h4
-    newTaskDate = document.createElement(`h4`)
-    newTaskDate.classList.add("task-date")
-    newTaskDate.innerHTML = dateNewTask
+    if (dateNewTask !== "") {
+        newTaskDate = document.createElement(`h4`)
+        newTaskDate.classList.add("task-date")
+        newTaskDate.innerHTML = dateNewTask
+    }
+    else {
+        newTaskDate = document.createElement(`h4`)
+        newTaskDate.classList.add("task-date")
+        newTaskDate.innerHTML = dateNewTask
+    }
 
     newTaskTime = document.createElement(`h4`)
     newTaskTime.classList.add("task-time")
     newTaskTime.innerHTML = timeNewTask
 
     // ? create .important h5
-    newImportant = document.createElement(`h5`)
+    newImportant = document.createElement(`div`)
     newImportant.classList.add("important")
     if (important) {
         newImportant.innerHTML = "important"
@@ -80,6 +98,8 @@ function newTask() {
     newEditBtn = document.createElement(`i`)
     newEditBtn.classList.add("far")
     newEditBtn.classList.add("fa-edit")
+    newEditBtn.onclick = editTask
+
     newTrashBtn = document.createElement(`i`)
     newTrashBtn.classList.add("far")
     newTrashBtn.classList.add("fa-trash-alt")
@@ -88,12 +108,25 @@ function newTask() {
 
 
     // ? insertion
+    if (dateNewTask !== "") {
     newDateTimeArea.append(newTaskDate, newTaskTime)
+    }
+    else {
+    newDateTimeArea.append(newTaskTime)
+    }
+
+    if (important) {
     newTaskInfo.append(newTaskName, newDateTimeArea, newImportant)
+    }
+    else {
+        newTaskInfo.append(newTaskName, newDateTimeArea)  
+    }
+    
     newTaskButton.append(newEditBtn, newTrashBtn)
     newListHolder.append(newFinishCheck, newTaskInfo, newTaskButton)
     taskList.append(newListHolder)
 
+    newTaskItem.value = " "
     console.log(" ");
 
 }
@@ -116,4 +149,11 @@ function deleteTask() {
     listNode = this.parentNode.parentNode
     console.log(listNode);
     listNode.remove()
+}
+
+function editTask() {
+    console.log(`EDIT`);
+    listNode = this.parentNode.parentNode
+    changedTask = prompt("Edit your task")
+    listNode.querySelector(`.task-name`).innerHTML = changedTask
 }
