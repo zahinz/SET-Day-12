@@ -2,6 +2,7 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box;
+    transition: all 200ms;
 }
 
 :root {
@@ -57,7 +58,7 @@ button {
     display: flex;
     justify-content: center;
     border: none;
-    background-color: rgb(235, 235, 235);;
+    background-color: rgb(235, 235, 235);
     margin-right: 20px;
     overflow: hidden;
 }
@@ -80,8 +81,20 @@ button {
     height: 250px;
 }
 
+#taskDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #newTaskFormArea h1 {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
+}
+
+#newTaskFormArea #taskWording {
+    font-size: 1rem;
+    color: var(--pri-color);
+    opacity: 0.7;
 }
 
 #newTaskBtn {
@@ -99,13 +112,23 @@ button {
 #dateDayArea {
     display: flex;
     align-items: center;
+    width: 80%;
 }
+
+::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator {
+    padding: 0;
+    margin: 0;
+    padding-left: 5px;
+}
+
+
 
 #dateNewTask, #timeNewTask {
     display: flex;
     text-align: center;
-    margin-right: 10px;
-    padding: 2px 5px;
+    margin-right: 8px;
+    height: 30px;
+    padding: 0px 4px;
 }
 
 #asapArea {
@@ -132,11 +155,12 @@ button {
 
 #taskList {
     width: 90%;
-    /* ! remove hieght later */
-    /* height: 100px; */
     margin-top: 40px;
     overflow: scroll;
     height: 58%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
 }
 
 .list-holder {
@@ -146,6 +170,22 @@ button {
     border-radius: 10px;
     margin-bottom: 10px;
     padding: 15px 0;
+    animation-name: slide-up;
+    animation-duration: 900ms;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+}
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0%);
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 #taskFinished {
@@ -160,6 +200,7 @@ button {
 .task-name {
     margin-bottom: 10px;
     font-size: 0.85rem;
+    text-transform: capitalize;
 }
 
 .date-time-area {
@@ -192,7 +233,7 @@ button {
 }
 
 .important {
-    background-color: var(--pri-color);
+    background-color: rgb(227 69 69);
     color: white;
     display: flex;
     width: max-content;
@@ -211,5 +252,7 @@ button {
     width: 90%;
     /* ! remove hieght later */
     /* height: 100px; */
-    margin-top: 40px;
+    margin: 40px 0;
+    height: auto;
+    overflow: scroll;
 }

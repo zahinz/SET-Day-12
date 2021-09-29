@@ -1,16 +1,17 @@
 console.log(`TESTING`);
 
 // ? declaring variable 
-
 let taskList = document.getElementById(`taskList`)
 let completeList = document.getElementById(`completeList`)
 let asapNewTask = document.getElementById(`asapNewTask`)
 let newTaskItem = document.getElementById(`newTask`)
+let taskListNumber = document.getElementById(`taskNumber`)
+
 
 window.addEventListener("keydown", pressedKeyDown)
 
 function pressedKeyDown(evt) {
-    console.log(evt);
+    // console.log(evt);
     if (evt.code == "Enter") {
         newTask()
         newTaskItem.value = " "
@@ -68,15 +69,16 @@ function newTask() {
     newDateTimeArea.classList.add("date-time-area")
 
     // ? create new .task-date .task-time h4
+    newTaskDate = document.createElement(`h4`)
+    newTaskDate.classList.add("task-date")
+    
     if (dateNewTask !== "") {
-        newTaskDate = document.createElement(`h4`)
-        newTaskDate.classList.add("task-date")
         newTaskDate.innerHTML = dateNewTask
+        console.log(`has date`);
     }
     else {
-        newTaskDate = document.createElement(`h4`)
-        newTaskDate.classList.add("task-date")
-        newTaskDate.innerHTML = dateNewTask
+        newTaskDate.innerHTML = "Today"
+        console.log(`has no date`, newTaskDate.innerHTML);
     }
 
     newTaskTime = document.createElement(`h4`)
@@ -87,7 +89,7 @@ function newTask() {
     newImportant = document.createElement(`div`)
     newImportant.classList.add("important")
     if (important) {
-        newImportant.innerHTML = "important"
+        newImportant.innerHTML = "⚡️ important"
     }
 
     // ? create new .task-button div
@@ -108,12 +110,8 @@ function newTask() {
 
 
     // ? insertion
-    if (dateNewTask !== "") {
+    if (newTaskList !== "") {
     newDateTimeArea.append(newTaskDate, newTaskTime)
-    }
-    else {
-    newDateTimeArea.append(newTaskTime)
-    }
 
     if (important) {
     newTaskInfo.append(newTaskName, newDateTimeArea, newImportant)
@@ -126,8 +124,11 @@ function newTask() {
     newListHolder.append(newFinishCheck, newTaskInfo, newTaskButton)
     taskList.append(newListHolder)
 
-    newTaskItem.value = " "
+    newTaskItem.value = ""
     console.log(" ");
+    }
+    
+    updateTask()
 
 }
 
@@ -142,6 +143,8 @@ function finishedTask(event) {
     else {
         taskList.append(listNode)
     }
+    
+    updateTask()
 }
 
 function deleteTask() {
@@ -149,6 +152,9 @@ function deleteTask() {
     listNode = this.parentNode.parentNode
     console.log(listNode);
     listNode.remove()
+
+    updateTask()
+
 }
 
 function editTask() {
@@ -157,3 +163,13 @@ function editTask() {
     changedTask = prompt("Edit your task")
     listNode.querySelector(`.task-name`).innerHTML = changedTask
 }
+
+function updateTask() {
+    // ? update the tasks counter
+    let nodeTaskList = document.getElementById("taskList").childNodes
+    taskNumber = nodeTaskList.length - 3;
+    taskListNumber.innerHTML = taskNumber
+}
+
+
+
